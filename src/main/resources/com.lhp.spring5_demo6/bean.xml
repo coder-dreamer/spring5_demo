@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="student" class="com.lhp.spring5_demo6.bean.Student">
+        <!--数组-->
+        <property name="course">
+            <array>
+                <value>数学</value>
+                <value>语文</value>
+            </array>
+        </property>
+        <!--list-->
+        <property name="names">
+            <list>
+                <value>lhp</value>
+                <value>张三</value>
+            </list>
+        </property>
+        <!--map-->
+        <property name="courseInfo">
+            <map>
+                <entry key="数学" value="math"></entry>
+                <entry key="语文" value="chinese"></entry>
+            </map>
+        </property>
+        <!--set-->
+        <property name="set">
+            <set>
+                <value>1</value>
+                <value>1</value>
+                <value>2</value>
+            </set>
+        </property>
+    </bean>
+</beans>

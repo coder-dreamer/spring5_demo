@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--内部bean-->
+    <bean id="user" class="com.lhp.spring5_demo5.bean.User">
+        <property name="name" value="lhp"></property>
+        <!--内部bean赋值-->
+        <property name="dep">
+            <bean id="dep" class="com.lhp.spring5_demo5.bean.Dep">
+                <property name="name" value="研发部"></property>
+            </bean>
+        </property>
+    </bean>
+    <!--级联赋值方式1：-->
+    <bean id="user1" class="com.lhp.spring5_demo5.bean.User">
+        <property name="name" value="lhp1"></property>
+        <property name="dep" ref="dep1"></property>
+    </bean>
+    <bean id="dep1" class="com.lhp.spring5_demo5.bean.Dep">
+        <property name="name" value="财务部"></property>
+    </bean>
+    <!--级联赋值方式2-->
+    <bean id="user2" class="com.lhp.spring5_demo5.bean.User">
+        <property name="name" value="lhp2"></property>
+        <property name="dep" ref="dep2"></property>
+        <property name="dep.name" value="人力资源部"></property>
+    </bean>
+    <bean id="dep2" class="com.lhp.spring5_demo5.bean.Dep">
+    </bean>
+</beans>
