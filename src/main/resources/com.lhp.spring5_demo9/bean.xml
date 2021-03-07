@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+    <!--bean的生命周期-->
+    <bean id="user" class="com.lhp.spring5_demo9.bean.User" init-method="initMethod" destroy-method="destroyMethod">
+        <property name="uName" value="lhp"/>
+    </bean>
+    <!--配置后置处理器-->
+    <bean id="beanPost" class="com.lhp.spring5_demo9.bean.BeanPost"></bean>
+</beans>

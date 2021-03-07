@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+    <!--bean的手动装配-->
+    <bean id="user" class="com.lhp.spring5_demo10.bean.User">
+        <property name="course" ref="course"/>
+    </bean>
+    <!--bean的自动装配 依赖autowire-->
+    <bean id="user1" class="com.lhp.spring5_demo10.bean.User" autowire="byName">
+    </bean>
+    <!--公共部分-->
+    <bean id="course" class="com.lhp.spring5_demo10.bean.Course">
+        <property name="cName" value="数学"/>
+    </bean>
+</beans>

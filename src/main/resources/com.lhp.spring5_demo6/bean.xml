@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
     <bean id="student" class="com.lhp.spring5_demo6.bean.Student">
         <!--数组-->
         <property name="course">
@@ -33,4 +35,28 @@
             </set>
         </property>
     </bean>
+    <!--在集合里面设置对象类型值-->
+    <bean id="student1" class="com.lhp.spring5_demo6.bean.Student">
+        <property name="courseList">
+            <list>
+                <ref bean="course1"/>
+                <ref bean="course2"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="course1" class="com.lhp.spring5_demo6.bean.Course">
+        <property name="cName" value="spring5教程"/>
+    </bean>
+    <bean id="course2" class="com.lhp.spring5_demo6.bean.Course">
+        <property name="cName" value="spring5教程1"/>
+    </bean>
+    <!--提取集合再注入-->
+    <bean id="student2" class="com.lhp.spring5_demo6.bean.Student">
+        <property name="course" ref="utilList">
+        </property>
+    </bean>
+    <util:list id="utilList">
+        <value >Linux私房菜</value>
+        <value>Java编程思想</value>
+    </util:list>
 </beans>

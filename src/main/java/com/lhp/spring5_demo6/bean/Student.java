@@ -14,6 +14,8 @@ public class Student {
     private Map<String, String> courseInfo;
     private Set<String> set;
 
+    private List<Course> courseList;
+
     public void setCourse(String[] course) {
         this.course = course;
     }
@@ -30,6 +32,10 @@ public class Student {
         this.set = set;
     }
 
+    public void setCourseList(List<Course> courseList) {
+        this.courseList = courseList;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
@@ -37,6 +43,7 @@ public class Student {
                 ", names=" + names +
                 ", courseInfo=" + courseInfo +
                 ", set=" + set +
+                ", courseList=" + courseList +
                 '}';
     }
 }

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+    <!--bean的作用域-默认单例-->
+    <bean id="myBean" class="com.lhp.spring5_demo8.bean.MyBean">
+    </bean>
+    <!--bean的作用域-指定单例-->
+    <bean id="myBean1" class="com.lhp.spring5_demo8.bean.MyBean" scope="singleton">
+    </bean>
+
+    <!--bean的作用域-指定多例-->
+    <bean id="myBean2" class="com.lhp.spring5_demo8.bean.MyBean" scope="prototype">
+    </bean>
+</beans>
