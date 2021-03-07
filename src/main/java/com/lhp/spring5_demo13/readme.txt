@@ -1,0 +1,1 @@
+spring Bean管理方式----基于注解----使用@Autowired注入属性
