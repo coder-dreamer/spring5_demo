@@ -1,1 +1,1 @@
-spring Bean管理方式----基于XML配置文件----引入外部属性文件
+spring Bean管理方式----基于XML配置文件----引入外部属性文件，详见com.lhp.spring5_demo11/bean.xml
