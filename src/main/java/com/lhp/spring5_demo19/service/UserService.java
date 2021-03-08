@@ -32,15 +32,23 @@ public class UserService {
         return userDao.selectCount();
     }
 
-    public User findUser(int id){
+    public User findUser(int id) {
         return userDao.selectObject(id);
     }
 
-    public List<User> findUserList(){
+    public List<User> findUserList() {
         return userDao.selectObjectList();
     }
 
-    public int[] batchAddUser(List<User> userList){
+    public int[] batchAddUser(List<User> userList) {
         return userDao.batchAdd(userList);
+    }
+
+    public int[] batchUpdateUser(List<User> userList) {
+        return userDao.batchUpdate(userList);
+    }
+
+    public int[] batchDeleteUser(List<Integer> idList) {
+        return userDao.batchDelete(idList);
     }
 }

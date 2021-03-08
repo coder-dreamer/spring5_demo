@@ -61,4 +61,20 @@ public interface UserDao {
      * @return
      */
     int[] batchAdd(List<User> userList);
+
+    /**
+     * 批量更新用户
+     *
+     * @param userList
+     * @return
+     */
+    int[] batchUpdate(List<User> userList);
+
+    /**
+     * 批量删除用户
+     *
+     * @param idList
+     * @return
+     */
+    int[] batchDelete(List<Integer> idList);
 }

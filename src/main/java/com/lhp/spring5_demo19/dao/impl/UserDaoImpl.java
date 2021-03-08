@@ -64,4 +64,25 @@ public class UserDaoImpl implements UserDao {
         });
         return jdbcTemplate.batchUpdate(sql, userInfoList);
     }
+
+    @Override
+    public int[] batchUpdate(List<User> userList) {
+        String sql = "update user set name=?,sex=? where id=?";
+        List<Object[]> userInfoList = new ArrayList<>();
+        userList.forEach(user -> {
+            userInfoList.add(new Object[]{user.getName(), user.getSex(),user.getId()});
+        });
+        return jdbcTemplate.batchUpdate(sql, userInfoList);
+    }
+
+
+    @Override
+    public int[] batchDelete(List<Integer> idList) {
+        String sql = "delete from user where id=?";
+        List<Object[]> idArrList = new ArrayList<>();
+        idList.forEach(id -> {
+            idArrList.add(new Object[]{id});
+        });
+        return jdbcTemplate.batchUpdate(sql, idArrList);
+    }
 }
