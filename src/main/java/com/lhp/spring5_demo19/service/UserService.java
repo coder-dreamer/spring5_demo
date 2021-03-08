@@ -5,6 +5,8 @@ import com.lhp.spring5_demo19.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 /**
  * @author 53137
@@ -32,5 +34,9 @@ public class UserService {
 
     public User findUser(int id){
         return userDao.selectObject(id);
+    }
+
+    public List<User> findUserList(){
+        return userDao.selectObjectList();
     }
 }

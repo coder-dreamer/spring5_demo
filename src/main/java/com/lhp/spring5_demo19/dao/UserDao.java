@@ -2,6 +2,8 @@ package com.lhp.spring5_demo19.dao;
 
 import com.lhp.spring5_demo19.bean.User;
 
+import java.util.List;
+
 /**
  * @author 53137
  */
@@ -44,4 +46,11 @@ public interface UserDao {
      * @return
      */
     User selectObject(int id);
+
+    /**
+     * 查询返回集合
+     *
+     * @return
+     */
+    List<User> selectObjectList();
 }

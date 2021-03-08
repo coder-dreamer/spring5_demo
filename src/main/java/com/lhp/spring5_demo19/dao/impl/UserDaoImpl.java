@@ -8,6 +8,8 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * @author 53137
  */
@@ -44,5 +46,11 @@ public class UserDaoImpl implements UserDao {
     public User selectObject(int id) {
         String sql = "select * from user where id = ?";
         return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<User>(User.class), id);
+    }
+
+    @Override
+    public List<User> selectObjectList() {
+        String sql = "select * from user";
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<User>(User.class));
     }
 }

@@ -7,6 +7,8 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.List;
+
 /**
  * @author 53137
  */
@@ -51,5 +53,14 @@ public class JdbcTemplateTest {
         User user = userService.findUser(2);
         System.out.println(user.toString());
     }
+
+    @Test
+    public void selectObjectList() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("com.lhp.spring5_demo19/bean.xml");
+        UserService userService = context.getBean("userService", UserService.class);
+        List<User> userList = userService.findUserList();
+        System.out.println(userList);
+    }
+
 
 }
