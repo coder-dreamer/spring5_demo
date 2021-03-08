@@ -25,4 +25,8 @@ public class UserService {
     public int deleteUser(User user) {
         return userDao.deleteUser(user);
     }
+
+    public int userCount() {
+        return userDao.selectCount();
+    }
 }

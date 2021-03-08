@@ -29,4 +29,11 @@ public interface UserDao {
      * @return
      */
     int deleteUser(User user);
+
+    /**
+     * 查询记录数
+     *
+     * @return
+     */
+    int selectCount();
 }

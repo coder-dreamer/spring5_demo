@@ -35,4 +35,11 @@ public class JdbcTemplateTest {
         int value = userService.deleteUser(new User(1));
         System.out.println(value);
     }
+    @Test
+    public void selectCount() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("com.lhp.spring5_demo19/bean.xml");
+        UserService userService = context.getBean("userService", UserService.class);
+        int value = userService.userCount();
+        System.out.println(value);
+    }
 }

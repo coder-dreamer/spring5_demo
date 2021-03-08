@@ -32,4 +32,10 @@ public class UserDaoImpl implements UserDao {
         String sql = "delete from user where id= ?";
         return jdbcTemplate.update(sql, new Object[]{user.getId()});
     }
+
+    @Override
+    public int selectCount() {
+        String sql = "select count(*) from user";
+        return jdbcTemplate.queryForObject(sql, Integer.class);
+    }
 }
