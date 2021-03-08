@@ -17,4 +17,12 @@ public class UserService {
     public int addUser(User user) {
         return userDao.addUser(user);
     }
+
+    public int updateUser(User user) {
+        return userDao.updateUser(user);
+    }
+
+    public int deleteUser(User user) {
+        return userDao.deleteUser(user);
+    }
 }

@@ -4,8 +4,18 @@ package com.lhp.spring5_demo19.bean;
  * @author 53137
  */
 public class User {
+    private int id;
     private String name;
     private String sex;
+
+    public User(int id) {
+        this.id = id;
+    }
+
+    public User(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
     public User(String name, String sex) {
         this.name = name;
@@ -26,5 +36,13 @@ public class User {
 
     public void setSex(String sex) {
         this.sex = sex;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

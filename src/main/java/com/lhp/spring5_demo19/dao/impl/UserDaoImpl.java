@@ -18,7 +18,18 @@ public class UserDaoImpl implements UserDao {
     @Override
     public int addUser(User user) {
         String sql = "insert into user(name,sex) values(?,?)";
-        int value = jdbcTemplate.update(sql, new Object[]{user.getName(), user.getSex()});
-        return value;
+        return jdbcTemplate.update(sql, new Object[]{user.getName(), user.getSex()});
+    }
+
+    @Override
+    public int updateUser(User user) {
+        String sql = "update user set name = ? where id= ?";
+        return jdbcTemplate.update(sql, new Object[]{user.getName(), user.getId()});
+    }
+
+    @Override
+    public int deleteUser(User user) {
+        String sql = "delete from user where id= ?";
+        return jdbcTemplate.update(sql, new Object[]{user.getId()});
     }
 }

@@ -13,4 +13,20 @@ public interface UserDao {
      * @return
      */
     int addUser(User user);
+
+    /**
+     * 更新用户
+     *
+     * @param user
+     * @return
+     */
+    int updateUser(User user);
+
+    /**
+     * 删除用户
+     *
+     * @param user
+     * @return
+     */
+    int deleteUser(User user);
 }
