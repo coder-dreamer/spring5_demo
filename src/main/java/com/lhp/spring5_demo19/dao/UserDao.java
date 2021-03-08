@@ -53,4 +53,12 @@ public interface UserDao {
      * @return
      */
     List<User> selectObjectList();
+
+    /**
+     * 批量添加用户
+     *
+     * @param userList
+     * @return
+     */
+    int[] batchAdd(List<User> userList);
 }

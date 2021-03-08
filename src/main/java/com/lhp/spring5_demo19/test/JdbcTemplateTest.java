@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -62,5 +63,14 @@ public class JdbcTemplateTest {
         System.out.println(userList);
     }
 
-
+    @Test
+    public void batchAdd() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("com.lhp.spring5_demo19/bean.xml");
+        UserService userService = context.getBean("userService", UserService.class);
+        List<User> userList = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            userList.add(new User("lhp" + i, i % 2 == 0 ? Sex.男.name() : Sex.女.name()));
+        }
+        System.out.println(userService.batchAddUser(userList).toString());
+    }
 }

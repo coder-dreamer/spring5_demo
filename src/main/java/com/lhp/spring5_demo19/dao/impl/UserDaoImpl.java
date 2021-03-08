@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -52,5 +53,15 @@ public class UserDaoImpl implements UserDao {
     public List<User> selectObjectList() {
         String sql = "select * from user";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<User>(User.class));
+    }
+
+    @Override
+    public int[] batchAdd(List<User> userList) {
+        String sql = "insert into user (name,sex) values(?,?)";
+        List<Object[]> userInfoList = new ArrayList<>();
+        userList.forEach(user -> {
+            userInfoList.add(new Object[]{user.getName(), user.getSex()});
+        });
+        return jdbcTemplate.batchUpdate(sql, userInfoList);
     }
 }
