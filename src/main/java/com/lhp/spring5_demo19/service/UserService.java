@@ -29,4 +29,8 @@ public class UserService {
     public int userCount() {
         return userDao.selectCount();
     }
+
+    public User findUser(int id){
+        return userDao.selectObject(id);
+    }
 }

@@ -36,4 +36,12 @@ public interface UserDao {
      * @return
      */
     int selectCount();
+
+    /**
+     * 查询返回对象
+     *
+     * @param id
+     * @return
+     */
+    User selectObject(int id);
 }

@@ -4,6 +4,7 @@ import com.lhp.spring5_demo19.bean.Sex;
 import com.lhp.spring5_demo19.bean.User;
 import com.lhp.spring5_demo19.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -37,5 +38,11 @@ public class UserDaoImpl implements UserDao {
     public int selectCount() {
         String sql = "select count(*) from user";
         return jdbcTemplate.queryForObject(sql, Integer.class);
+    }
+
+    @Override
+    public User selectObject(int id) {
+        String sql = "select * from user where id = ?";
+        return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<User>(User.class), id);
     }
 }
