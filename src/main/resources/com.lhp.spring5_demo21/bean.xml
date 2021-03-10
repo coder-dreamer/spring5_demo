@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+    <!--注解扫描-->
+    <context:component-scan base-package="com.lhp.spring5_demo21"/>
+    <!--外部属性文件-->
+    <context:property-placeholder location="classpath:com.lhp.spring5_demo21/jdbc.properties"/>
+    <!--连接池-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="url" value="${mysql.url}"/>
+        <property name="driverClassName" value="${mysql.driverClass}"/>
+        <property name="username" value="${mysql.username}"/>
+        <property name="password" value="${mysql.password}"/>
+    </bean>
+    <!-- JdbcTemplate 对象 -->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <!--注入 dataSource-->
+        <!--set方式注入-->
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!--配置事务-->
+    <!--1、创建事务管理器-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!--注入数据源-->
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!--2 配置通知-->
+    <tx:advice id="tx_advice">
+        <!--配置事务的一些相关参数-->
+        <tx:attributes>
+            <!--指定哪种规则的方法上添加事务-->
+            <tx:method name="tr*" propagation="REQUIRED"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <!--3 配置切入点和切面-->
+    <aop:config>
+        <!--配置切入点-->
+        <aop:pointcut id="pt" expression="execution(* com.lhp.spring5_demo21.service.UserAccountService.*(..))"/>
+        <!--配置切面-->
+        <aop:advisor advice-ref="tx_advice" pointcut-ref="pt"/>
+    </aop:config>
+
+</beans>
